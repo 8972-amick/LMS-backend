@@ -79,7 +79,7 @@ export const getAllBooks = async (req, res) => {
 };
 
 
-exports.updateBook = async (req, res) => {
+export const updateBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
     if (!book) return res.status(404).json({ message: "Book not found" });
@@ -109,7 +109,7 @@ exports.updateBook = async (req, res) => {
 };
 
 
-exports.deleteBook = async (req, res) => {
+export const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
     if (!book) return res.status(404).json({ message: "Book not found" });

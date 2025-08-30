@@ -38,4 +38,3 @@ router.delete("/:id", verifyToken, allowRoles("librarian"), deleteBook);
 
 export default router;
 
-module.exports = router;
