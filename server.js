@@ -1,11 +1,14 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const path = require("path");
-const morgan = require("morgan");
 
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import path from "path";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes.js";
+import bookRoutes from "./routes/bookRoutes.js";
+import borrowRoutes from "./routes/borrowRoutes.js";
 
-const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
@@ -31,10 +34,6 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
-const authRoutes = require("./routes/authRoutes");
-const bookRoutes = require("./routes/bookRoutes");
-const borrowRoutes = require("./routes/borrowRoutes");
-
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/borrow", borrowRoutes);
@@ -53,4 +52,4 @@ mongoose
     console.error(err.message || err);
   });
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(path.dirname(new URL(import.meta.url).pathname), "uploads")));

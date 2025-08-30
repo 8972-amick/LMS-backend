@@ -1,8 +1,8 @@
-const Book = require("../models/Book");
-const Borrow = require("../models/Borrow");
+import Book from "../models/Book.js";
+import Borrow from "../models/Borrow.js";
 
 
-exports.createBook = async (req, res) => {
+export const createBook = async (req, res) => {
   try {
     console.log("req.body:", req.body);
     console.log("req.file:", req.file);
@@ -41,7 +41,7 @@ exports.createBook = async (req, res) => {
 };
 
 
-exports.getAllBooks = async (req, res) => {
+export const getAllBooks = async (req, res) => {
   try {
     const userId = req.user ? req.user.id : null;
     const books = await Book.find();

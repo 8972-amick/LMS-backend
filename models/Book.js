@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -10,4 +10,4 @@ const bookSchema = new mongoose.Schema({
   visibleToBorrowers: { type: Boolean, default: true } 
 });
 
-module.exports = mongoose.model("Book", bookSchema);
+export default mongoose.model("Book", bookSchema);

@@ -1,25 +1,23 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   createBook,
   getAllBooks,
   updateBook,
   deleteBook,
-} = require("../controllers/bookControllers");
+} from "../controllers/bookControllers.js";
 
-const verifyToken = require("../Middleware/authMiddleware");
-const allowRoles = require("../Middleware/roleMiddleware");
-const upload = require("../Middleware/uploadMiddleware"); 
+import verifyToken from "../Middleware/authMiddleware.js";
+import allowRoles from "../Middleware/roleMiddleware.js";
+import upload from "../Middleware/uploadMiddleware.js";
 
 const router = express.Router();
-
-
 
 // Create a new book (with image)
 router.post(
   "/",
   verifyToken,
   allowRoles("librarian"),
-  upload.single("photo"), 
+  upload.single("photo"),
   createBook
 );
 
@@ -37,5 +35,7 @@ router.put(
 
 // Delete book
 router.delete("/:id", verifyToken, allowRoles("librarian"), deleteBook);
+
+export default router;
 
 module.exports = router;

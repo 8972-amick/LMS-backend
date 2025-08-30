@@ -1,7 +1,10 @@
-const Borrow = require("../models/Borrow");
-const Book = require("../models/Book");
-
-exports.borrowBook = async (req, res) => {
+import Borrow from "../models/Borrow.js";
+import Book from "../models/Book.js";
+import User from "../models/User.js";
+import Borrow from "../models/Borrow.js";
+import Book from "../models/Book.js";
+import User from "../models/User.js";
+export const borrowBook = async (req, res) => {
   try {
     const { bookId } = req.body;
     const userId = req.user.id;
@@ -40,7 +43,7 @@ exports.borrowBook = async (req, res) => {
 };
 
 // Return a book
-exports.returnBook = async (req, res) => {
+export const returnBook = async (req, res) => {
   try {
     const { borrowId } = req.body;
     const userId = req.user.id;
@@ -79,7 +82,7 @@ exports.returnBook = async (req, res) => {
 };
 
 // Get all borrow records (for librarian)
-exports.getAllBorrowRecords = async (req, res) => {
+export const getBorrowedBooks = async (req, res) => {
   try {
     const records = await Borrow.find()
       .populate("userId", "name email")

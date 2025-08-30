@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const borrowSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
@@ -7,4 +7,4 @@ const borrowSchema = new mongoose.Schema({
   returnDate: { type: Date, default: null },
 });
 
-module.exports = mongoose.model("Borrow", borrowSchema);
+export default mongoose.model("Borrow", borrowSchema);

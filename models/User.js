@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, match: /^[A-Za-z\s]+$/ },
@@ -7,4 +7,4 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ["borrower", "librarian"], default: "borrower" }
 });
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);
